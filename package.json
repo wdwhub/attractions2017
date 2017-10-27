@@ -1,0 +1,7 @@
+{
+  "name": "attractions2017",
+  "private": true,
+  "dependencies": {
+    "normalize.css": "^7.0.0"
+  }
+}
