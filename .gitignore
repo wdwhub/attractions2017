@@ -4,7 +4,7 @@
 *.swp
 .byebug_history
 /.bundle
-/.env.local
+/.env*
 /coverage/*
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -16,3 +16,4 @@
 /tags
 /tmp/*
 /yarn-error.log
+/faraday.log

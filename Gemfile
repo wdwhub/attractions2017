@@ -17,7 +17,7 @@ gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 5.1.3"
 gem "recipient_interceptor"
-gem "sass-rails", "~> 5.0"
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem "simple_form"
 gem "skylight"
 gem "sprockets", ">= 3.0.0"
@@ -60,7 +60,20 @@ group :production do
   gem "rack-timeout"
 end
 
+# UI
 gem 'high_voltage'
-gem 'bourbon', '~> 5.0.0.beta.8'
-gem 'neat', '~> 2.1'
-gem 'refills', group: [:development, :test]
+gem 'foundation-rails', '~> 6.4', '>= 6.4.1.2'
+
+## app specific
+gem 'fuzzy_match', '~> 2.1' # best match strings
+gem 'responders', '~> 2.2' #putting back responders into rails. Hey DHH, :P.
+gem 'rails_12factor', '~> 0.0.3' # better heroku hosting 
+
+#consume json api
+gem 'faraday', '~> 0.9.2' 
+gem 'faraday_middleware', '~> 0.10.0'
+gem 'mechanize', '~> 2.7', '>= 2.7.4'
+gem 'foursquare2', '~> 2.0', '>= 2.0.2'
+gem 'representable', '~> 3.0', '>= 3.0.4'
+gem 'multi_json', '~> 1.12', '>= 1.12.2'
+# gem 'flickraw', '~> 0.9.9'

@@ -1,0 +1,3 @@
+class AttractionRepresentation < OpenStruct
+	
+end
