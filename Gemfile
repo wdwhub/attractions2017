@@ -70,6 +70,8 @@ gem 'responders', '~> 2.2' #putting back responders into rails. Hey DHH, :P.
 gem 'rails_12factor', '~> 0.0.3' # better heroku hosting 
 
 #consume json api
+gem 'httparty', '~> 0.15.6' # grab the contents of a url
+gem 'crack', '~> 0.4.3' # parse the xml or json of that page
 gem 'faraday', '~> 0.9.2' 
 gem 'faraday_middleware', '~> 0.10.0'
 gem 'mechanize', '~> 2.7', '>= 2.7.4'
