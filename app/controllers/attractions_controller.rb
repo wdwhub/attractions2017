@@ -29,41 +29,7 @@ class AttractionsController < ApplicationController
     @dfb_eatery   = @venue.dfb_eateries.first
   end
 
-  # GET /venues/new
-  # def new
-  #   @venue = Venue.new
-  # end
-
-  # GET /venues/1/edit
-  # def edit
-  # end
-
-  # POST /venues
-  # def create
-  #   @venue = Venue.new(venue_params)
-
-  #   if @venue.save
-  #     redirect_to @venue, notice: 'Venue was successfully created.'
-  #   else
-  #     render :new
-  #   end
-  # end
-
-  # PATCH/PUT /venues/1
-  # def update
-  #   if @venue.update(venue_params)
-  #     redirect_to @venue, notice: 'Venue was successfully updated.'
-  #   else
-  #     render :edit
-  #   end
-  # end
-
-  # DELETE /venues/1
-  # def destroy
-  #   @venue.destroy
-  #   redirect_to venues_url, notice: 'Venue was successfully destroyed.'
-  # end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_attraction
