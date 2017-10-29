@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :foursquare_review do
+    
+  end
   factory :attraction do
     
   end

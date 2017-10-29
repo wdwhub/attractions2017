@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171028200235) do
+ActiveRecord::Schema.define(version: 20171029010017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,35 @@ ActiveRecord::Schema.define(version: 20171028200235) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "foursquare_reviews", force: :cascade do |t|
+    t.string "venue_id"
+    t.string "name"
+    t.string "address"
+    t.string "cross_street"
+    t.string "lat"
+    t.string "lng"
+    t.string "alt_venues"
+    t.string "searched_for"
+    t.datetime "archived_at"
+    t.text "categories"
+    t.string "referral_id"
+    t.text "location"
+    t.text "canonical_url"
+    t.boolean "verified"
+    t.boolean "dislike"
+    t.boolean "ok"
+    t.decimal "rating", precision: 10, scale: 2
+    t.string "rating_color"
+    t.string "rating_signals"
+    t.boolean "allow_menu_url_edit"
+    t.string "specials"
+    t.text "wdw_uri"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "attraction_id"
+    t.index ["attraction_id"], name: "index_foursquare_reviews_on_attraction_id"
+  end
+
   create_table "touringplans_cached_venues", force: :cascade do |t|
     t.string "name"
     t.boolean "fastpass_booth"
@@ -174,4 +203,5 @@ ActiveRecord::Schema.define(version: 20171028200235) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "foursquare_reviews", "attractions"
 end
