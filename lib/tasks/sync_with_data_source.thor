@@ -14,11 +14,11 @@ class SyncWithDataSource < Thor
     AttractionSync.new.update_all_from_touringplans_com
   end
   
-  # desc "foursquare_venues", "sync cached records with foursquare.com"
-  # def foursquare_venues
-  #   say "Updating Foursquare venues…", :blue
-  #   FoursquareSync.new.update_all_foursquare_cached_venues
-  # end
+  desc "foursquare_venues", "sync cached records with foursquare.com"
+  def foursquare_venues
+    say "Updating Foursquare venues…", :blue
+    FoursquareSyncVenue.all
+  end
 
   # desc "foursquare_photos", "sync cached photos with foursquare.com"
   # def foursquare_photos
