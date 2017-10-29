@@ -7,7 +7,7 @@ class AttractionsController < ApplicationController
 end
 # 
 class AttractionsController < ApplicationController
-  before_action :set_venue, only: [:show]
+  before_action :set_attraction, only: [:show]
 
   # GET /venues
   def index
@@ -22,18 +22,18 @@ class AttractionsController < ApplicationController
 
   # GET /venues/1
   def show
-    @venue        = Attraction.find(params[:id])
-    @photos       = @venue.foursquare_eatery.find_cached_images
-    @tips         = @venue.foursquare_eatery.find_cached_tips
-    @dfb_articles = @venue.dfb_articles
-    @dfb_eatery   = @venue.dfb_eateries.first
+    # @attraction        = Attraction.find(params[:id])
+    # @photos       = @venue.foursquare_eatery.find_cached_images
+    # @tips         = @venue.foursquare_eatery.find_cached_tips
+    # @dfb_articles = @venue.dfb_articles
+    # @dfb_eatery   = @venue.dfb_eateries.first
   end
 
   
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_attraction
-      @venue = Attraction.find(params[:id])
+      @attraction = Attraction.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
