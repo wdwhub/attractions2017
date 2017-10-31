@@ -1,41 +1,58 @@
-<style>
-  .thumbnail {
-    background-image:
-    linear-gradient(to bottom, rgba(255,255,0,0.5), rgba(0,0,255,0.5)),
-    url("<%= image_path 'background-image' %>");
-
-  }
-  .guest-photo {
-    min-height: 150px;
-  }
-  .guest-icon {
-    min-height: 48px;
-  }
-  .slide {
-    background-image:
-    linear-gradient(to bottom, rgba(255,255,0,0.5), rgba(0,0,255,0.5)),
-    url("<%= image_path 'background-image' %>");
-    min-height: 90%;    
-  }
-</style>
 
 <section>
     <p style="color: white">spacer</p>
-        <%= render :partial => 'name' %>
+        <%#= render :partial => 'name' %>
 
     
+    </section>
+
+<section id="carousel">
+  <div class="news-image-gallery-container">
+  <div class="row">
+    <div class="small-12 medium-12 large-8 columns">
+      <% @photos.first(1).each do |image| %>
+        <%= image_tag "#{image.prefix}914x457#{image.suffix}", alt: "Food", class: "slide" %>
+      <% end -%>
+    </div>
+    <div class="small-12 medium-12 large-4 columns">
+      <div class="rounded-social-buttons">
+        <a class="social-button facebook" href="#"></a>
+        <a class="social-button twitter" href="#"></a>
+        <a class="social-button linkedin" href="#"></a>
+        <a class="social-button google-plus" href="#"></a>
+      </div>
+      <div class="clearfix"></div>
+          <%= render :partial =>  'venue_info_section' %>
+    </div>
+  </div>
+</div>
+
+
+
 </section>
 
+<div class="main-content">
+  <section class="tips">
+  </section>
+         
 
   <!--  -->
+  <%# if @attraction.dfb_articles.count.to_i > 2 %>
+
+  <section id="bloggings">
+
+  </section>
+  <%# end %>
 
     <div class="row column text-center">
       <hr />
       <h2>Guest Photos</h2>
       <hr>
-      <%#= render :partial => "guest_photo_gallery" %>
+      <%= render :partial => "guest_photo_gallery" %>
     </div>
 
 
       <hr>
 </div>
+    <%#= render :partial => "guest_comments" %>
+    <%= render :partial => "callout_large_secondary" %>

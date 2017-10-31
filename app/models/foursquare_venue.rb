@@ -1,4 +1,3 @@
-require "search_venue"
 
 class FoursquareVenue
 
@@ -19,7 +18,7 @@ class FoursquareVenue
   
   def search_venues(search_term)
     responses = []
-    connection.query({query: "#{search_term.to_s} resort",
+    connection.query({query: "disney #{search_term.to_s}",
       client_id: connection.client_id, 
       client_secret: connection.client_secret, 
       v: connection.api_version, 
