@@ -1,12 +1,4 @@
 class AttractionsController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-end
-# 
-class AttractionsController < ApplicationController
   before_action :set_attraction, only: [:show]
 
   # GET /venues
@@ -22,7 +14,7 @@ class AttractionsController < ApplicationController
 
   # GET /venues/1
   def show
-    # @photos       = @venue.foursquare_review.find_cached_images
+    @photos       = @attraction.foursquare_review.cached_photos
     # @tips         = @venue.foursquare_review.find_cached_tips
     # @dfb_articles = @venue.dfb_articles
     # @dfb_eatery   = @venue.dfb_eateries.first

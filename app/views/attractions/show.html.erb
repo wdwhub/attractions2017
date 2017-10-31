@@ -21,21 +21,38 @@
 
 <section>
     <p style="color: white">spacer</p>
-        <%= render :partial => 'name' %>
+        <%#= render :partial => 'name' %>
 
     
+    </section>
+
+<section id="carousel">
+
+
 </section>
 
+<div class="main-content">
+  <section class="tips">
+  </section>
+         
 
   <!--  -->
+  <%# if @attraction.dfb_articles.count.to_i > 2 %>
+
+  <section id="bloggings">
+
+  </section>
+  <%# end %>
 
     <div class="row column text-center">
       <hr />
       <h2>Guest Photos</h2>
       <hr>
-      <%#= render :partial => "guest_photo_gallery" %>
+      <%= render :partial => "guest_photo_gallery" %>
     </div>
 
 
       <hr>
 </div>
+    <%#= render :partial => "guest_comments" %>
+    <%= render :partial => "callout_large_secondary" %>

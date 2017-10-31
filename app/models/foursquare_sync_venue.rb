@@ -16,6 +16,7 @@ class FoursquareSyncVenue
   def self.venue(venue_id:, name:) 
   	puts "====== FoursquareGuaranteedVenue: #{name}, venue_id: #{venue_id} ========================="
     fgv                   = FoursquareGuaranteedVenue.venue(venue_id) || FoursquareMissingVenue.new
+    puts "fgv.name: #{fgv.name}"
     sleep 0.25
   	puts "=========================================================="
     attraction = Attraction.find_by(name: "#{name}")    
