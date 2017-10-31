@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029010017) do
+ActiveRecord::Schema.define(version: 20171031170021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,27 @@ ActiveRecord::Schema.define(version: 20171029010017) do
     t.boolean "hide_app"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cached_photos", force: :cascade do |t|
+    t.integer "height"
+    t.integer "created_at_by_epoch"
+    t.integer "width"
+    t.string "foursquare_venue_id"
+    t.string "prefix"
+    t.string "suffix"
+    t.string "foursquare_user_name"
+    t.string "visibility"
+    t.string "foursquare_photo_id"
+    t.string "user_icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "foursquare_review_id"
+    t.text "source"
+    t.integer "foursquare_user_id"
+    t.string "photographer_first_name"
+    t.string "photographer_last_name"
+    t.index ["foursquare_review_id"], name: "index_cached_photos_on_foursquare_review_id"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -203,5 +224,6 @@ ActiveRecord::Schema.define(version: 20171029010017) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "cached_photos", "foursquare_reviews"
   add_foreign_key "foursquare_reviews", "attractions"
 end

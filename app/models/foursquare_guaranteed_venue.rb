@@ -28,8 +28,10 @@ class FoursquareGuaranteedVenue
     
   end
   
-  def self.venue_photos(venue_id:)
-    fvp = FoursquareVenuePhoto.new.venue_photos(venue_id)  || FoursquareMissingVenuePhoto.new
+  def self.venue_photos(venue_id)
+    # # fvp = FoursquareVenuePhoto.new(connection: FoursquareConnection.new(venue_id: venue_id, api_version: '20160607', query:{verified: true})).venue_photos(venue_id)  || FoursquareMissingVenuePhoto.new
+    fvp = FoursquareVenue.new(connection: FoursquareConnection.new(venue_id: venue_id, api_version: '20160607', query:{verified: true})).venue.photos || FoursquareMissingVenue.new
+    # fvp.photos
   end
   
   def self.venue_tips(venue_id:, search_term: '')

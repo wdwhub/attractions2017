@@ -1,0 +1,2 @@
+class FoursquarePhotoRepresentation < OpenStruct
+end

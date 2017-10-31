@@ -51,36 +51,46 @@ class FoursquareSyncVenue
 
   end
 
-  # def self.all_photos
-  #   # update all venues and get venue ID's
-  #   all_saved_venues = FoursquareReview.all.select(:venue_id)
-  #   all_saved_venue_ids = all_saved_venues.collect {|review| review[:venue_id] }
-    
-  #   all_saved_venue_ids.each do |venue_id|
-  #     self.photos(venue_id)
-  #   end
-  # end
+  def self.update_photos_for_all_venues
+    # update all venues and get venue ID's
+    all_saved_venues = FoursquareReview.where("venue_id IS NOT NULL").select(:venue_id)
+    all_saved_venue_ids = all_saved_venues.collect {|review| review[:venue_id] }
+    all_saved_venue_ids.each do |venue_id|
+      self.update_photos_for_venue(venue_id)
+    end
+  end
 
-  def self.photos(venue_id)
-    # photos = FoursquareGuaranteedVenue.venue_photos(venue_id: venue_id)
-    # review = FoursquareReview.where(venue_id: venue_id).first_or_create
-    # photos.each do |photo|
-    #   puts "parent venue: #{photo.foursquare_venue_id} photo id: #{photo.id}"
-    #   fp = FoursquarePhoto.where(foursquare_photo_id: photo.id).first_or_create
-    #   fp.update(source:                 photo.source.to_s,
-    #             prefix:                 photo.prefix.to_s,
-    #             suffix:                 photo.suffix.to_s,
-    #             width:                  photo.width.to_i,
-    #             height:                 photo.height.to_i,
-    #             visibility:             photo.visibility.to_s,
-    #             foursquare_user_id:     photo.user.fetch('id'),
-    #             foursquare_venue_id:    venue_id,
-    #             foursquare_photo_id:    photo.id,
-    #             created_at:             Time.at(photo.createdAt.to_i),
-    #             photographer_first_name:  photo.user.fetch("firstName", FoursquareMissingVenuePhoto.new.photographer_first_name),
-    #             photographer_last_name:  photo.user.fetch("lastName", FoursquareMissingVenuePhoto.new.photographer_last_name)
-    #   )
-    # end
+  def self.update_photos_for_venue(venue_id)
+    photo_stream      = FoursquareGuaranteedVenue.venue(venue_id).photos
+    puts "======= photo photo_stream ===="
+    puts "venue_id #{venue_id}}"
+    puts "==============================="
+    puts "photos #{photo_stream["count"]}"
+    puts "==============================="
+    return if photo_stream["count"].to_i < 2
+    pc = photo_stream.fetch("groups").first.fetch("items")
+    photo_collection  = FoursquarePhotoCollectionRepresenter.new(name: "groucho", items: [])
+    pcr = pc.each {|i| photo_collection.represented[:items] << FoursquarePhotoRepresentation.new(i)}
+    photos = photo_collection.represented[:items]
+
+    review = FoursquareReview.find_or_create_by(venue_id: venue_id)
+    photos.each do |photo|
+      puts "photo id: #{photo.id}"
+      fp = review.cached_photos.find_or_create_by(foursquare_photo_id: photo.id)
+      fp.update(source:                 photo.source.to_s,
+                prefix:                 photo.prefix.to_s,
+                suffix:                 photo.suffix.to_s,
+                width:                  photo.width.to_i,
+                height:                 photo.height.to_i,
+                visibility:             photo.visibility.to_s,
+                foursquare_user_id:     photo.user.fetch('id').to_i,
+                foursquare_venue_id:    venue_id,
+                foursquare_photo_id:    photo.id,
+                created_at:             Time.at(photo.createdAt.to_i),
+                photographer_first_name:  photo.user.fetch("firstName", FoursquareMissingVenuePhoto.new.photographer_first_name),
+                photographer_last_name:  photo.user.fetch("lastName", FoursquareMissingVenuePhoto.new.photographer_last_name)
+      )
+    end
 
   end
 

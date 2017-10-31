@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :cached_photo do
+    
+  end
   factory :foursquare_review do
     
   end
