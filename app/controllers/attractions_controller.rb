@@ -20,6 +20,9 @@ class AttractionsController < ApplicationController
     # @dfb_eatery   = @venue.dfb_eateries.first
   end
 
+  def new
+    
+  end
   
   private
     # Use callbacks to share common setup or constraints between actions.
