@@ -1,0 +1,3 @@
+class FoursquareSourceRepresentation < OpenStruct
+
+end
