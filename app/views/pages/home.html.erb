@@ -1,2 +1,33 @@
+<style>
+	
+.hero-section {
+  background: url(<%= image_path 'background-image.jpg' %>) 50% no-repeat;
+  background-size: cover;
+  height: 60vh;
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 
-<%= render '/pages/side_image' %>
+.hero-section .hero-section-text {
+	color: #fee;
+  background: rgba(128, 128, 128, 0.7); 
+}
+
+
+</style>
+<div class="hero-section">
+  <div class="hero-section-text">
+    <h2>WDW Hub Attractions Beta</h2>
+    <h5>Tap <em><%= link_to "here", attractions_path, style: "color: white;text-decoration:underline;" %></em> for more <em><%= link_to "fun", attractions_path, style: "color: white;text-decoration:underline;" %></em></h5>
+  </div>
+</div>
+
+
