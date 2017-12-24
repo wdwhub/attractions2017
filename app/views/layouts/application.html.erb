@@ -1,5 +1,7 @@
 <!--  -->
-<%# provide(:title, @venue.name) %>
+<% if @attraction %>
+	<% provide(:title, "#{@attraction.name}") %>	
+<% end %>
 <!doctype html>
 <html class="no-js" lang="en">
   <%= render :partial => "head" %>
